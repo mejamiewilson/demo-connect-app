@@ -1,0 +1,73 @@
+{
+	"connectors": {
+		"chargify": {
+			"token": "abkjs"
+		},
+		"xero": {
+			"token": "eljrs"
+		}
+	},
+
+	"modules": [
+
+		{
+			"name": "saveChargifyPaymentDetails",
+			"src": "./_hoist/scripts/saveChargifyPaymentDetails.js",
+			"defaultContext": "admin@hoi.io",
+		}, {
+			"name": "processBatchPayments",
+			"src": "./_hoist/scripts/processBatchPayments.js",
+			"overrideContext": "admin@hoi.io"
+		}, {
+			"name": "saveToXero",
+			"src": "./_hoist/scripts/saveToXero.js",
+			"defaultContext": "admin@hoi.io"
+		}, {
+			"name": "getFromXero",
+			"src": "./_hoist/scripts/getFromXero.js",
+			"defaultContext": "admin@hoi.io"
+		}
+
+	],
+
+	"on": {
+
+		"chargify.payment.success": {
+			"modules": ["saveChargifyPaymentDetails"]
+		},
+
+		"nightly.batch.start": {
+			"modules": ["processBatchPayments"]
+		},
+
+		"new.invoice": {
+			"modules": ["saveToXero"]
+		},
+
+		"get.invoices": {
+			"modules": ["getFromXero"]
+		}
+
+	},
+	"endpoints": {
+		"/payment/success":{
+			"methods":["POST"],
+			"event":"chargify.payment.success",
+			"authenticated":true
+		},
+		"/:product/getLatestInvoices": {
+			"methods": ["GET"],
+			"event": "get.invoices",
+			"authenticated": true,
+			"syncronous":true
+		}
+	},
+
+	"schedules": {
+		"0 0 * * *": {
+			"events": [
+				"nightly.batch.start"
+			]
+		}
+	}
+}
