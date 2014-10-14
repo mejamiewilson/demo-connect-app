@@ -6,6 +6,7 @@ module.exports = function (event) {
   //put the new invoice
   xero.put('/invoice', invoice, function (err) {
     if (err) {
+      //these two lines do the same thing
       hoist.error(err);
       throw err;
     } else {
