@@ -13,7 +13,7 @@
 		{
 			"name": "saveChargifyPaymentDetails",
 			"src": "./_hoist/scripts/saveChargifyPaymentDetails.js",
-			"defaultContext": "admin@hoi.io",
+			"defaultContext": "admin@hoi.io"
 		}, {
 			"name": "processBatchPayments",
 			"src": "./_hoist/scripts/processBatchPayments.js",
