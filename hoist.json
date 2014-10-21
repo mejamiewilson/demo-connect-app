@@ -32,19 +32,19 @@
 
 	"on": {
 
-		"chargify.payment.success": {
+		"chargify:payment:success": {
 			"modules": ["saveChargifyPaymentDetails"]
 		},
 
-		"nightly.batch.start": {
+		"nightly:batch:start": {
 			"modules": ["processBatchPayments"]
 		},
 
-		"new.invoice": {
+		"new:invoice": {
 			"modules": ["saveToXero"]
 		},
 
-		"get.invoices": {
+		"get:invoices": {
 			"modules": ["getFromXero"]
 		}
 
@@ -52,12 +52,12 @@
 	"endpoints": {
 		"/payment/success":{
 			"methods":["POST"],
-			"event":"chargify.payment.success",
+			"event":"chargify:payment:success",
 			"authenticated":true
 		},
 		"/:product/getLatestInvoices": {
 			"methods": ["GET"],
-			"event": "get.invoices",
+			"event": "get:invoices",
 			"authenticated": true,
 			"syncronous":true
 		}
@@ -66,7 +66,7 @@
 	"schedules": {
 		"0 0 * * *": {
 			"events": [
-				"nightly.batch.start"
+				"nightly:batch:start"
 			]
 		}
 	}
