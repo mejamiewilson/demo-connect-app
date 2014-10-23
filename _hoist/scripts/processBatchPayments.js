@@ -1,7 +1,7 @@
 'use strict';
 var hoist = require('hoist-js');
 var _ = require('lodash');
-module.exports = function () {
+module.exports = function (event,done) {
   var start = new Date();
   start.setHours(-24, 0, 0, 0);
   var end = new Date();
@@ -30,6 +30,7 @@ module.exports = function () {
         });
         hoist.raise('new.invoice', invoice);
       });
+      done();
 
     });
 };
