@@ -1,5 +1,5 @@
 'use strict';
 module.exports = function (event,done) {
-  console.log(event);
+  console.log(Hoist.connector('xero'));
   done();
 };
