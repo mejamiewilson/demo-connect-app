@@ -55,7 +55,7 @@
 
   },
   "endpoints": {
-    "/poll/xero" {
+    "/poll/xero": {
       "methods": ["get"],
       "event": "poll:xero"
     }
