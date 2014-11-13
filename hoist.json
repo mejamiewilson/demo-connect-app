@@ -58,7 +58,7 @@
     "/poll/xero": {
       "methods": ["get"],
       "event": "poll:xero"
-    }
+    },
     "/payment/success": {
       "methods": ["POST"],
       "event": "chargify:payment:success",
