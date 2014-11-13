@@ -1,16 +1,21 @@
 {
   "modules": [
-
     {
       "name": "pollXero",
       "src": "./_hoist/scripts/pollXero.js"
+    },
+    {
+      "name": "postContact",
+      "src": "./_hoist/scripts/postContact.js"
     }
-
   ],
 
   "on": {
     "poll:xero": {
       "modules": ["pollXero"]
+    },
+    "xero:contact": {
+      "modules": ["postContact"]
     }
 
   },
