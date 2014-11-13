@@ -1,4 +1,5 @@
 'use strict';
+/*
 var request = require('request');
 
 module.exports = function (ev, done) {
@@ -13,3 +14,4 @@ module.exports = function (ev, done) {
     done();
   });
 };
+*/

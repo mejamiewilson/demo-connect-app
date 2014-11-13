@@ -1,6 +1,9 @@
 'use strict';
+
 var BBPromise = require('bluebird');
 var _ = require('lodash');
+
+
 module.exports = function (ev, done) {
   console.log('in poll xero');
   Hoist.connector('hoist-connector-xero', 'xero')
@@ -19,3 +22,4 @@ module.exports = function (ev, done) {
       console.log('error with xero connector', err);
     }).nodeify(done);
 };
+
