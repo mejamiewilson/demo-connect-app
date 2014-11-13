@@ -14,8 +14,7 @@ module.exports = function (ev, done) {
       .on('error', function (err) {
         console.log('error during request', err);
         done();
-      }).on('response', function (response) {
-        console.log('got response', response);
+      }).on('response', function () {
         done();
       });
   }).catch(function (err) {
