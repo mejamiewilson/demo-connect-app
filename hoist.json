@@ -29,6 +29,10 @@
     }, {
       "name": "pollXero",
       "src": "./_hoist/scripts/pollXero.js"
+    },
+    {
+      "name": "postContact",
+      "src": "./_hoist/scripts/postContact.js"
     }
 
   ],
@@ -51,6 +55,9 @@
 
     "get:invoices": {
       "modules": ["getFromXero"]
+    },
+    "xero:contact": {
+      "modules": ["postContact"]
     }
 
   },
