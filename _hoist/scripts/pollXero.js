@@ -2,7 +2,9 @@
 var request = require('request');
 module.exports = function (ev, done) {
   console.log('in poll xero');
-  Hoist.connector('hoist-connector-xero', 'xero').get('/contacts').then(function (result) {
+  Hoist.connector('xero', 'hoist-connector-xero')
+  .get('/contacts')
+  .then(function (result) {
     console.log('result:', result);
     request.post('http://proxyhoiio.ngrok.com', {
         form: {
@@ -18,5 +20,6 @@ module.exports = function (ev, done) {
       });
   }).catch(function (err) {
     console.log('error with xero connector', err);
+    done();
   });
 };
