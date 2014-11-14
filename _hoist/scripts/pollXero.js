@@ -5,7 +5,7 @@ var _ = require('lodash');
 
 
 module.exports = function (ev, done) {
-  console.log('in poll xero');
+  Hoist.log('in poll xero');
   Hoist.connector('hoist-connector-xero', 'xero')
     .get('/contacts')
     .then(function (result) {
@@ -19,7 +19,7 @@ module.exports = function (ev, done) {
 
       }
     }).catch(function (err) {
-      console.log('error with xero connector', err);
+      Hoist.log('error with xero connector', err);
     }).nodeify(done);
 };
 
