@@ -79,7 +79,7 @@
   },
 
   "schedules": {
-    "day": {
+    "0 0 * * *": {
       "events": [
         "nightly:batch:start"
       ]
