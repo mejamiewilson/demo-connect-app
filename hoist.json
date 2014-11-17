@@ -79,12 +79,12 @@
   },
 
   "schedules": {
-    "0 0 * * *": {
+    "day": {
       "events": [
         "nightly:batch:start"
       ]
     },
-    "0 * * * *": {
+    "minute": {
       "events": [
         "ping:me"
       ]
