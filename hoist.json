@@ -29,8 +29,7 @@
     }, {
       "name": "pollXero",
       "src": "./_hoist/scripts/pollXero.js"
-    },
-    {
+    }, {
       "name": "postContact",
       "src": "./_hoist/scripts/postContact.js"
     }
@@ -83,6 +82,11 @@
     "0 0 * * *": {
       "events": [
         "nightly:batch:start"
+      ]
+    },
+    "0 * * * *": {
+      "events": [
+        "ping:me"
       ]
     }
   }
