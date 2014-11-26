@@ -1,11 +1,16 @@
 'use strict';
-var BBPromise = require('bluebird');
-var _ = require('lodash');
+
+//var BBPromise = require('bluebird');
+//var _ = require('lodash');
+
+
 module.exports = function (ev, done) {
-  console.log('in poll xero');
-  Hoist.connector('hoist-connector-xero', 'xero')
+  Hoist.log('in poll xero').then(function(){
+
+  return Hoist.connector('hoist-connector-xero', 'xero')
     .get('/contacts')
-    .then(function (result) {
+    .then(function () {
+      /*
       if (result.Response.Contacts.Contact) {
         var eventsRaised = _.map(result.Response.Contacts.Contact, function (contact) {
           return Hoist.events.raise('xero:contact', {
@@ -15,7 +20,12 @@ module.exports = function (ev, done) {
         return BBPromise.all(eventsRaised);
 
       }
+      */
+      return Hoist.log('got response from xero');
+
     }).catch(function (err) {
-      console.log('error with xero connector', err);
-    }).nodeify(done);
+      Hoist.log('error with xero connector', err);
+    });
+  }).nodeify(done);
 };
+
