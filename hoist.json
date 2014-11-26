@@ -1,13 +1,14 @@
 {
-  "modules": [
-    {
-      "name": "pollXero",
-      "src": "./_hoist/scripts/pollXero.js"
-    }, {
-      "name": "postContact",
-      "src": "./_hoist/scripts/postContact.js"
-    }
-  ],
+  "modules": [{
+    "name": "pollXero",
+    "src": "./_hoist/scripts/pollXero.js"
+  }, {
+    "name": "postContact",
+    "src": "./_hoist/scripts/postContact.js"
+  }, {
+    "name": "pingLog",
+    "src": "./_hoist/scripts/pingLog.js"
+  }],
 
   "on": {
     "poll:xero": {
@@ -15,8 +16,10 @@
     },
     "xero:contact": {
       "modules": ["postContact"]
+    },
+    "ping:me": {
+      "modules": ["pingLog"]
     }
-
   },
   "endpoints": {
     "/poll/xero": {
@@ -43,7 +46,7 @@
         "nightly:batch:start"
       ]
     },
-    "minute": {
+    "* * * * *": {
       "events": [
         "ping:me"
       ]
