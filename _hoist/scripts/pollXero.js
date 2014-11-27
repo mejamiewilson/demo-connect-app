@@ -24,8 +24,6 @@ module.exports = function (ev, done) {
       throw new Error('i created an error');
       return Hoist.log('got response from xero');
 
-    }).catch(function (err) {
-      Hoist.log('error with xero connector', err);
     });
   }).nodeify(done);
 };
