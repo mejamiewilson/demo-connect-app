@@ -20,7 +20,7 @@
     "ping:me": {
       "modules": ["pingLog"]
     }
-  },
+  }
   "endpoints": {
     "/poll/xero": {
       "methods": ["get"],
