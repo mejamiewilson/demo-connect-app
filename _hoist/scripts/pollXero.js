@@ -12,12 +12,16 @@ module.exports = function (ev, done) {
       .then(function (result) {
 
         if (result.Response.Contacts.Contact) {
+          var index = 0;
           var eventsRaised = _.map(result.Response.Contacts.Contact, function (contact) {
             return Hoist.events.raise('xero:contact', {
-              contact: contact
+              contact: contact,
+              number: index++
             });
           });
-          return BBPromise.all(eventsRaised);
+          return BBPromise.all(eventsRaised).then(function () {
+            return Hoist.log('recieved', result.Response.Contacts.Contact.length, 'contacts');
+          });
 
         }
         return Hoist.log('got response from xero');

@@ -2,7 +2,7 @@
 
 
 module.exports = function (ev, done) {
-  Hoist.log('got a contact', JSON.stringify(ev.payload)).then(function(){
+  Hoist.log('got a contact', ev.payload.number, JSON.stringify(ev.payload.contact.ContactID)).then(function () {
     done();
   });
 };
