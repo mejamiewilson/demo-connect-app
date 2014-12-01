@@ -1,13 +1,13 @@
 'use strict';
 
-var BBPromise = require('bluebird');
-var _ = require('lodash');
+//var BBPromise = require('bluebird');
+//var _ = require('lodash');
 
 
 module.exports = function (ev, done) {
   Hoist.log('in poll xero').then(function () {
-
-    return Hoist.connector('hoist-connector-xero', 'xero')
+    return Hoist.data('pollEvent').save(ev);
+    /*return Hoist.connector('hoist-connector-xero', 'xero')
       .get('/contacts')
       .then(function (result) {
 
@@ -29,6 +29,6 @@ module.exports = function (ev, done) {
         }
         return Hoist.log('got response from xero');
 
-      });
+      });*/
   }).nodeify(done);
 };
