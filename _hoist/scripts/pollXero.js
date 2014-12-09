@@ -5,8 +5,8 @@
 
 
 module.exports = function (ev, done) {
-  Hoist.log('in poll xero').then(function () {
-    return Hoist.data('pollEvent').save(ev);
+  Hoist.log('in poll xero', ev).then(function () {
+    
     /*return Hoist.connector('hoist-connector-xero', 'xero')
       .get('/contacts')
       .then(function (result) {
