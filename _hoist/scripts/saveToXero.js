@@ -1,6 +1,6 @@
 'use strict';
-var hoist = require('hoist-js');
-var xero = hoist.connector('xero', 'eljrs');
+var xero = Hoist.connector('xero');
+
 module.exports = function (event,done) {
   var invoice = event.payload;
   //put the new invoice
@@ -11,7 +11,7 @@ module.exports = function (event,done) {
       //this one will also mark the module run as failed with an error
       throw err;
     } else {
-      hoist.raise('save.invoice.done', invoice);
+      hoist.raise('save:invoice:done', invoice);
     }
     done();
   });

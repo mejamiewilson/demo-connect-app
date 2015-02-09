@@ -1,54 +1,42 @@
 {
   "modules": [{
-    "name": "pollXero",
-    "src": "./_hoist/scripts/pollXero.js"
+    "name": "saveChargifyPayment",
+    "src": "./_hoist/scripts/saveChargifyPayment.js"
   }, {
-    "name": "postContact",
-    "src": "./_hoist/scripts/postContact.js"
+    "name": "saveExternalPayment",
+    "src": "./_hoist/scripts/saveExternalPayment.js"
   }, {
-    "name": "pingLog",
-    "src": "./_hoist/scripts/pingLog.js"
+    "name": "saveToXero",
+    "src": "./_hoist/scripts/saveToXero.js"
+  }, {
+    "name": "processBatchPayments",
+    "src": "./_hoist/scripts/processBatchPayments.js"
   }],
-
   "on": {
-    "poll:xero": {
-      "modules": ["pollXero"]
+    "chargify:payment:success": {
+      "modules": ["saveChargifyPayment"]
     },
-    "xero:contact": {
-      "modules": ["postContact"]
+    "save:external:payment": {
+      "modules": ["saveExternalPayment"]
     },
-    "ping:me": {
-      "modules": ["pingLog"]
+    "saveToXero": {
+      "modules": ["saveToXero"]
+    },
+    "nightly:batch:start": {
+      "modules": ["processBatchPayments"]
     }
   },
   "endpoints": {
-    "/poll/xero": {
-      "methods": ["get"],
-      "event": "poll:xero"
-
-    },
-    "/payment/success": {
+    "/payments/save": { //add a note to say "Post data into Hoist using endpoints"
       "methods": ["POST"],
-      "event": "chargify:payment:success",
+      "event": "save:external:payment",
       "authenticated": true
-    },
-    "/:product/getLatestInvoices": {
-      "methods": ["GET"],
-      "event": "get:invoices",
-      "authenticated": true,
-      "syncronous": true
     }
   },
-
   "schedules": {
     "0 0 * * *": {
       "events": [
         "nightly:batch:start"
-      ]
-    },
-    "* * * * *": {
-      "events": [
-        "ping:me"
       ]
     }
   }
