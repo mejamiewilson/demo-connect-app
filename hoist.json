@@ -13,7 +13,7 @@
     "src": "./_hoist/scripts/processBatchPayments.js"
   }],
   "on": {
-    "chargify:payment:success": {
+    "chargify:payment:success": { //for point 2 
       "modules": ["saveChargifyPayment"]
     },
     "save:external:payment": {
